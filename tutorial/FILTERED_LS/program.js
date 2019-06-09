@@ -1,6 +1,11 @@
-let fileName = process.argv[2];
+let dirName = process.argv[2];
+let extention = process.argv[3];
 
 let fs = require('fs');
-fs.readFile(fileName, (err, data) => {
-  console.log(data.toString().split('\n').length - 1);
+fs.readdir(dirName, (err, list) => {
+  list.filter((val, index, list) => {
+    return val.endsWith("." + extention);
+    }).forEach((val, index, list) => {
+    console.log(val);
+  })
 });
